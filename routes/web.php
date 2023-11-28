@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/register/seeker', [App\Http\Controllers\UserController::class, 'createSeeker'])->name('create.Seeker');
 Route::post('/register/seeker', [App\Http\Controllers\UserController::class, 'storeSeeker'])->name('store.Seeker');
 
+Route::get('/register/employer', [App\Http\Controllers\UserController::class, 'createEmployer'])->name('create.employer');
+Route::post('/register/employer', [App\Http\Controllers\UserController::class, 'storeemployer'])->name('store.employer');
+
 Route::get('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
 Route::post('/login', [App\Http\Controllers\UserController::class, 'postLogin'])->name('login.post');
 

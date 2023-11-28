@@ -29,7 +29,7 @@
                 <a class="nav-link" href="{{route('store.Seeker')}}">Job Seeker</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Employer</a>
+                <a class="nav-link" href="{{route('create.employer')}}">Employer</a>
               </li>
               @endif
               @if (Auth::check())

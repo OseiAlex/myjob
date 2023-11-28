@@ -4,20 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Http\Requests\SeekerRegistrationRequest;
+use App\Http\Requests\RegistrationFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     const JOB_SEEKER = 'seeker';
+    const JOB_POSTER = 'employer';
 
     public function createSeeker()
     {
         return view('user.seeker-register');
     }
 
-    public function storeSeeker(SeekerRegistrationRequest $request){
+    public function createEmployer()
+    {
+        return view('user.employer-register');
+    }
+
+    public function storeSeeker(RegistrationFormRequest $request){
         // $request -> validate([
         //     'name' => ['required', 'string', 'max::255'],
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -31,7 +37,20 @@ class UserController extends Controller
             'user_type' => self::JOB_SEEKER
         ]);
 
-        return back();
+        return redirect() -> route('login') -> with('successMessage', 'Your account was created');
+    }
+
+    public function storeEmployer(RegistrationFormRequest $request){
+       
+        User::create([
+            'name' => $request -> get('name'),
+            'email' => $request -> get('email'),
+            'password' => bcrypt($request -> get('password')),
+            'user_type' => self::JOB_POSTER,
+            'user_trial' => now()->addWeek()
+        ]);
+
+        return redirect() -> route('login') -> with('successMessage', 'Your account was created');
     }
 
     public function login()

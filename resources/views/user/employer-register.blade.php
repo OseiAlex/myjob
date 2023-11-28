@@ -3,14 +3,26 @@
 @section('content')
 
 <div class="container mt-5">
-    <div class="row justify-content-center">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Looking for an employee?</h1>
+            <h3>Please create an account</h3>
+            <img src="{{asset('image/register.png')}}" alt="Click here">
+        </div>
 
-        <div class="col-md-8">
-            @include('message')
-            <div class="card shadow-lg">
-                <div class="card-header">Login</div>
-                <form action="{{route('login.post')}}" method="post">@csrf
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Employer Registration</div>
+                <form action="{{route('store.employer')}}" method="post">@csrf
                     <div class="card-body">
+                    
+                        <div class="form-group">
+                            <label for="name">Company Name</label>
+                            <input type="text" name="name" class="form-control">
+                            @if ($errors->has('name'))
+                                <span class="text-danger">{{$errors->first('name')}}</span>
+                            @endif
+                        </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -28,8 +40,8 @@
                             @endif
                         </div><br>
 
-                        <div class="form-group text-center">
-                            <button class="btn btn-primary" type="submit">Login</button>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Register</button>
                         </div>
                     </div>
                 </form>
