@@ -25,6 +25,8 @@ Route::post('/register/seeker', [App\Http\Controllers\UserController::class, 'st
 Route::get('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
 Route::post('/login', [App\Http\Controllers\UserController::class, 'postLogin'])->name('login.post');
 
+Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
+
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 // Route::get('/users', function(){

@@ -54,4 +54,10 @@ class UserController extends Controller
 
         return 'Wrong email or password';
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login');;
+    }
 }

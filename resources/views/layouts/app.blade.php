@@ -21,6 +21,7 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
+              @if (!Auth::check())
               <li class="nav-item">
                 <a class="nav-link" href="{{route('login')}}">Login</a>
               </li>
@@ -28,12 +29,26 @@
                 <a class="nav-link" href="{{route('store.Seeker')}}">Job Seeker</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Employer</a>
+                <a class="nav-link" href="">Employer</a>
               </li>
+              @endif
+              @if (Auth::check())
+              <li class="nav-item">
+                <a class="nav-link" id="logout" href="#">Logout</a>
+              </li>
+              @endif
+              <form id="form-logout" action="{{route('logout')}}" method="post">@csrf</form>
             </ul>
           </div>
         </div>
       </nav>
       @yield('content')
+      <script>
+        let logout = document.getElementById('logout');
+        let form = document.getElementById('form-logout');
+        logout.addEventListener('click', function(){
+          form.submit();
+        });
+      </script>
   </body>
 </html>
