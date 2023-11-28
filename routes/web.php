@@ -28,6 +28,7 @@ Route::post('/login', [App\Http\Controllers\UserController::class, 'postLogin'])
 Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 // Route::get('/users', function(){
 //     return view('user.index');
