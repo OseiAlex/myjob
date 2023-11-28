@@ -23,7 +23,7 @@ Route::get('/register/seeker', [App\Http\Controllers\UserController::class, 'cre
 Route::post('/register/seeker', [App\Http\Controllers\UserController::class, 'storeSeeker'])->name('store.Seeker');
 
 Route::get('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login');
-Route::post('/login', [App\Http\Controllers\UserController::class, 'login'])->name('login.post');
+Route::post('/login', [App\Http\Controllers\UserController::class, 'postLogin'])->name('login.post');
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 

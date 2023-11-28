@@ -47,8 +47,11 @@ class UserController extends Controller
         ]);
 
         $credentials = $request -> only('email', 'password');
-        if (Illuminate\Support\Facades\Auth:: attempt($credentials)) {
+        
+        if (Auth:: attempt($credentials)) {
             return redirect() -> intended('dashboard');
         }
+
+        return 'Wrong email or password';
     }
 }
