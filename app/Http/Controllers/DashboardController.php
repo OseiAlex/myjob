@@ -18,4 +18,9 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
+
+    public function verify()
+    {
+        return view('user.verify');
+    }
 }

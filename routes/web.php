@@ -31,6 +31,7 @@ Route::post('/login', [App\Http\Controllers\UserController::class, 'postLogin'])
 Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
+Route::get('/verify', [App\Http\Controllers\DashboardController::class, 'verify'])->name('verification.notice');
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 // Route::get('/users', function(){
