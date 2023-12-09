@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\UserController;
 use app\Http\Controllers\ContactController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use app\Http\Controllers\ContactController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+ 
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,6 +33,12 @@ Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware('verified')->name('dashboard');
 Route::get('/verify', [App\Http\Controllers\DashboardController::class, 'verify'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/login');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 // Route::get('/users', function(){
