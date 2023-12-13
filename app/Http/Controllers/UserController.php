@@ -37,6 +37,8 @@ class UserController extends Controller
             'user_type' => self::JOB_SEEKER
         ]);
 
+        Auth::login($user);
+
         $user->sendEmailVerificationNotification();
 
         return redirect() -> route('login') -> with('successMessage', 'Your account was created');
@@ -51,6 +53,8 @@ class UserController extends Controller
             'user_type' => self::JOB_POSTER,
             'user_trial' => now()->addWeek()
         ]);
+
+        Auth::login($user);
 
         $user->sendEmailVerificationNotification();
 
